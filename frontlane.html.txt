@@ -1,0 +1,301 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontlane Medical Center</title>
+<meta name="description" content="Frontlane Medical Center — safe abortion care, antenatal and maternity, family planning, ultrasound, minor surgeries and general medicine.">
+<link rel="icon" href="data:,">
+<style>
+:root{--accent:#0a7d7d;--muted:#6b7280;--bg:#f7fafc;--card:#ffffff}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.5;color:#0f172a;background:var(--bg);margin:0}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+header{background:linear-gradient(90deg,#ffffffcc, #f0fafb);backdrop-filter:saturate(1.1) blur(4px);position:sticky;top:0;z-index:40;border-bottom:1px solid #e6eef0}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;position:relative}
+.logo{display:flex;gap:12px;align-items:center}
+.logo img{height:44px;width:44px;border-radius:6px;}
+.logo h1{margin:0;font-size:20px;color:var(--accent)}
+nav a{margin-left:14px;text-decoration:none;color:#0f172a;font-weight:600;transition:0.3s}
+nav a.active{color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:2px;}
+html {scroll-behavior: smooth;}
+
+/* Hero Section */
+.hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding: 48px 0;
+      position: relative;color: white;background-image: url('images/hero-bg.jpg');
+      background-size: cover;background-position: center;background-repeat: no-repeat;border-radius: 10px;overflow: hidden;}
+.hero::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background: linear-gradient(-45deg, rgba(10,125,125,0.6), rgba(255,255,255,0.2), rgba(10,125,125,0.6), rgba(255,255,255,0.2));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  z-index:0;border-radius:10px;
+}
+@keyframes gradientAnimation {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.hero-inner{position: relative; z-index:1; display:flex;flex-direction:column;gap:18px;}
+.hero h2{font-size:28px;margin:0}
+.lead{color: var(--muted)}
+.cta{display:flex;gap:12px}
+.btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.btn.secondary{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:28px}
+.card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(12,22,26,0.06)}
+
+/* Gallery cards with hover */
+.gallery-card{min-height:120px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;
+  background-size:cover;background-position:center;position:relative;border-radius:10px;overflow:hidden;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;}
+.gallery-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background: rgba(0,0,0,0.3);border-radius:10px;transition: background 0.5s ease;}
+.gallery-card span{position:relative; z-index:1;text-align:center;}
+.gallery-card:hover{transform: scale(1.05); box-shadow: 0 12px 24px rgba(0,0,0,0.3);}
+.gallery-card:hover::before{background: rgba(10,125,125,0.5);}
+.gallery-card:hover::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background: linear-gradient(120deg, rgba(10,125,125,0.4), rgba(0,255,255,0.2), rgba(10,125,125,0.4));
+  background-size: 200% 200%;
+  animation: galleryGradient 6s ease infinite;
+  border-radius:10px;z-index:0;}
+@keyframes galleryGradient{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+section{padding:36px 0;border-top:1px solid #eef2f2}
+h3{margin:0 0 12px 0;color:#0f172a}
+ul.clean{list-style:none;padding:0;margin:0}
+ul.clean li{padding:8px 0;border-bottom:1px dashed #eef4f4;color:var(--muted)}
+.two-cols{display:grid;grid-template-columns:1fr 360px;gap:20px}
+form .row{display:flex;gap:8px}
+input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0}
+footer{padding:24px 0;color:var(--muted);font-size:14px;border-top:1px solid #e6eef0}
+.whatsapp{display:inline-flex;gap:8px;align-items:center;text-decoration:none;padding:8px 12px;border-radius:8px;background:#e6fffa;color:#036b61;font-weight:700}
+
+/* Floating WhatsApp Button */
+.floating-whatsapp {position: fixed;bottom: 20px;right: 20px;background-color: #25D366;color: white;font-weight: 700;padding: 12px 18px;border-radius: 50px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:100;transition: transform 0.2s;}
+.floating-whatsapp:hover { transform: scale(1.1); }
+
+/* Hamburger Menu */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; cursor:pointer; }
+.hamburger span { display: block; height: 3px; background: var(--accent); border-radius: 2px; }
+.nav-links { display: flex; gap: 14px; }
+@media(max-width:880px){
+  .hamburger { display: flex; }
+  .nav-links { 
+    position: absolute; top: 60px; right: 0; background: var(--bg);
+    flex-direction: column;width: 200px;padding: 12px;border-radius: 0 0 8px 8px;box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: none;
+  }
+  .nav-links.show { display: flex; }
+  nav a { margin: 8px 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      <img src="images/logo.png" alt="Frontlane Medical Center Logo">
+      <div>
+        <h1>Frontlane Medical Center</h1>
+        <div style="font-size:12px;color:var(--muted)">Quality care • Confidential • Respectful</div>
+      </div>
+    </div>
+    <nav>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-inner">
+    <h2>Compassionate, professional reproductive & general healthcare in a safe environment.</h2>
+    <p class="lead">Frontlane Medical Center offers confidential safe-abortion care, antenatal and maternity services, family planning, ultrasound and general medicine. Skilled staff, private rooms and modern equipment.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Book Appointment</a>
+      <a class="btn secondary" href="#services">See Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h3>Our Services</h3>
+<div class="two-cols">
+  <div>
+    <p class="lead">We provide respectful, confidential and evidence-based care. Below are the main services offered at Frontlane Medical Center.</p>
+
+    <div class="card" style="margin-top:12px">
+      <h4>1. Abortion & Post-abortion care</h4>
+      <ul class="clean">
+        <li>Legal / Safe abortion</li>
+        <li>Post-abortive care</li>
+        <li>Missed abortion</li>
+        <li>Inevitable abortion</li>
+        <li>Induced failed abortion</li>
+        <li>Surgical abortion</li>
+        <li>Manual Vacuum Aspiration / Evacuation (MVA/MVE)</li>
+        <li>Miscarriage management</li>
+        <li>Non-viable pregnancy management</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h4>2. Antenatal & Maternity</h4>
+      <p class="lead">Antenatal checkups, birth preparedness, labor support and postnatal follow-up.</p>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h4>3. Family Planning</h4>
+      <p class="lead">All modern contraceptive methods provided with counseling and follow-up.</p>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h4>4. Ultrasound Scan</h4>
+      <p class="lead">Obstetric and pelvic ultrasound scans with experienced sonographers.</p>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h4>5. Minor Surgeries</h4>
+      <p class="lead">Outpatient minor procedures under local anesthesia.</p>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <h4>6. Admissions & General Medicine</h4>
+      <p class="lead">Inpatient care for medical conditions, observation and acute management.</p>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h4>Quick Contact</h4>
+      <p class="lead">Call or WhatsApp us to book an appointment or get urgent advice.</p>
+      <p style="margin:0.25rem 0"><strong>0783 352 478</strong></p>
+      <p style="margin:0.25rem 0"><strong>0756 939 098</strong></p>
+      <p style="margin-top:8px"><a class="whatsapp" href="https://wa.me/256783352478?text=Hi%20Frontlane%20Medical%20Center%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank">Open WhatsApp</a></p>
+      <p style="margin-top:10px;color:var(--muted)">Location: Namugoona Northern Bypass roundabout (meeting point)</p>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h4>Opening Hours</h4>
+      <ul class="clean">
+        <li>Mon - Fri: 8:00 AM — 6:00 PM</li>
+        <li>Saturday: 8:00 AM — 1:00 PM</li>
+        <li>Sunday: Closed (Emergency by appointment)</li>
+      </ul>
+    </div>
+  </aside>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+<h3>Gallery</h3>
+<div class="cards">
+  <div class="gallery-card" style="background-image:url('images/clinic-room.jpg');"><span>Consultation Room</span></div>
+  <div class="gallery-card" style="background-image:url('images/doctors-team.jpg');"><span>Doctors Team</span></div>
+  <div class="gallery-card" style="background-image:url('images/nurses-team.jpg');"><span>Nurses Team</span></div>
+</div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="contact">
+<h3>Contact & Booking</h3>
+<div class="two-cols">
+  <div>
+    <div class="card">
+      <form id="bookingForm" onsubmit="handleSubmit(event)">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required>
+
+        <label for="phone">Phone or WhatsApp</label>
+        <input id="phone" name="phone" required>
+
+        <label for="service">Service</label>
+        <select id="service" name="service" required>
+          <option value="">Choose service</option>
+          <option>Abortion / Post-abortion care</option>
+          <option>Antenatal / Maternity</option>
+          <option>Family planning</option>
+          <option>Ultrasound scan</option>
+          <option>Minor surgery</option>
+          <option>Admissions / General medicine</option>
+        </select>
+
+        <label for="message">Details / Preferred date</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" type="submit">Send Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h4>Visit Us</h4>
+      <p class="lead">Meeting point: Namugoona Northern Bypass Roundabout (Namugoona area).</p>
+      <p style="margin-top:8px"><strong>Phone:</strong> <a href="tel:+256783352478">+256 783 352 478</a></p>
+      <p style="margin-top:4px"><strong>Email:</strong> <a href="mailto:info@frontlanemedical.org">info@frontlanemedical.org</a></p>
+      <div style="margin-top:10px">
+        <iframe title="map" src="https://www.google.com/maps?q=Namugoona%20Northern%20Bypass%20roundabout&output=embed" style="width:100%;height:180px;border:0;border-radius:8px"></iframe>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value || '';
+  const phone = document.getElementById('phone').value || '';
+  const service = document.getElementById('service').value || '';
+  const message = document.getElementById('message').value || '';
+  const text = encodeURIComponent(`Name: ${name}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`);
+  const waLink = `https://wa.me/256783352478?text=${text}`;
+  window.open(waLink, '_blank');
+}
+</script>
+</section>
+
+</main>
+
+<footer class="container">
+<div>© <strong>Frontlane Medical Center</strong> — All rights reserved.</div>
+</footer>
+
+<a class="floating-whatsapp" href="https://wa.me/256783352478?text=Hi%20Frontlane%20Medical%20Center" target="_blank">WhatsApp</a>
+
+<script>
+// Highlight active nav link
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 80;
+    if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => link.classList.remove('active'));
+  navLinks.forEach(link => { if(link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+});
+
+// Hamburger menu toggle
+const hamburger = document.getElementById('hamburger');
+const navLinksContainer = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => { navLinksContainer.classList.toggle('show'); });
+</script>
+
+</body>
+</html>
+
+     
