@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smipatie.github.io/Frontlane-medical-centre/sitemap.xml
